@@ -46,4 +46,4 @@ InsertionString = """INSERT INTO candidates (
                     :responsibilities_job, :skills_required
                 )"""
 
-keywords = ["candidate","person", "student", "knowledge","expertise","expert","internship", "intern", "experience", "skills", "degree", "job", "employment", "position", "yoe", "education"]
+keywords = ["candidate","person", "student", "knowledge","expertise","expert","internship", "intern", "experience", "skills", "degree", "job", "employment", "position", "yoe", "detail", "details","education"]

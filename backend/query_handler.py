@@ -1,3 +1,7 @@
+import os
+# Force the correct Instant Client path before any cx_Oracle call
+os.environ['PATH'] = r'C:\oracle\instantclient_19_12\instantclient_23_9;' + os.environ['PATH']
+
 import cx_Oracle
 from utils.schema import SCHEMA_DESCRIPTION
 from config import DB_DSN, DB_PASS, DB_USER, GEMINI_API_KEY

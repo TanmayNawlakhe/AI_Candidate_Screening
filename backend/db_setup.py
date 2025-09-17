@@ -1,3 +1,7 @@
+import os
+# Force the correct Instant Client path before any cx_Oracle call
+os.environ['PATH'] = r'C:\oracle\instantclient_19_12\instantclient_23_9;' + os.environ['PATH']
+
 import cx_Oracle
 import pandas as pd
 import json
@@ -9,7 +13,6 @@ from utils.lists import InsertionString
 
 
 def safe_get_field(row, field_name):
-    """Safely get field value with multiple possible field names"""
     possible_names = [field_name, field_name.lower(), field_name.upper()]
     for name in possible_names:
         if name in row and not pd.isnull(row[name]):
@@ -17,11 +20,8 @@ def safe_get_field(row, field_name):
     return None
 
 def clean_special_chars(text):
-    """Remove special characters that might cause issues"""
     if isinstance(text, str):
-        # Replace common problematic characters
         text = text.replace('â€¢', '•').replace('â€"', '-').replace('â€™', "'")
-        # Remove or replace other problematic unicode characters
         text = re.sub(r'[^\x00-\x7F]+', ' ', text)  # Remove non-ASCII characters
     return text
 
@@ -39,10 +39,9 @@ def calculate_total_yoe(start_dates_json, end_dates_json):
                 end = datetime.today().strftime('%b %Y')
 
             try:
-                # Handle different date formats
                 if len(start.split()) == 2:  # "May 2021"
                     start_dt = datetime.strptime(start, '%b %Y')
-                else:  # Try other formats or default
+                else:
                     start_dt = datetime.strptime(start, '%B %Y')
                 
                 if len(end.split()) == 2:  # "May 2021"
