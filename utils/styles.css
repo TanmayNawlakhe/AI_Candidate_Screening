@@ -1,0 +1,100 @@
+.chat-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem 1rem;
+    margin: -1rem -1rem 2rem -1rem;
+    border-radius: 0 0 15px 15px;
+    color: white;
+    text-align: center;
+}
+
+.chat-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.chat-subtitle {
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.status-info {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.status-info strong {
+    color: #fff;
+}
+
+.stChatMessage {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+}
+
+.stChatMessage[data-testid="user-message"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.stChatMessage[data-testid="assistant-message"] {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #667eea;
+}
+
+.error-message {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+.warning-message {
+    background: linear-gradient(135deg, #ffa726, #ff9800);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+.success-message {
+    background: linear-gradient(135deg, #66bb6a, #4caf50);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Custom scrollbar */
+.main .block-container {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Input styling */
+.stTextInput > div > div > input {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    padding: 0.75rem 1rem;
+}
+
+.stTextInput > div > div > input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+}
