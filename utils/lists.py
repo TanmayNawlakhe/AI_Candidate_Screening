@@ -46,7 +46,7 @@ InsertionString = """INSERT INTO candidates (
                     :responsibilities_job, :skills_required
                 )"""
 
-keywords = ["candidate","person", "student","career", "knowledge","expertise","expert","internship", "intern", "experience", "skills", "degree", "job", "employment", "position", "yoe", "detail", "details","education"]
+keywords = ["candidate","person","developers", "developer", "graduate", "undergraduate", "graduates", "student","career", "knowledge","expertise","expert","internship", "intern", "experience", "skills", "degree", "job", "employment", "position", "yoe", "detail", "details","education"]
 
 rules = """
     - Lowercase all the terms and attributes and inputs and everything just lowercase them. But you dont need to lowercase the retrieved results.

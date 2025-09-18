@@ -116,7 +116,7 @@ An AI-powered candidate screening system that converts natural language queries 
 ### Step 1: Clone/Download the Repository
 ```bash
 # Using git
-git clone <your-repository-url>
+git clone https://github.com/TanmayNawlakhe/AI_Candidate_Screening.git
 cd AI-Candidate-Screening
 
 ```
