@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from backend.query_handler import generate_sql_from_nl, execute_sql
 from backend.chat_response import generate_chat_response
 from utils.lists import keywords
@@ -23,6 +24,11 @@ def append_message(role: str, content: str, sql_query: str = None, results: list
         message["results"] = results
     
     st.session_state.messages.append(message)
+
+def render_results_table(results, columns):
+    if results and columns:
+        df = pd.DataFrame(results, columns=columns)
+        st.dataframe(df, use_container_width=True)
 
 def render_messages():
     if not st.session_state.get("messages", []):
@@ -90,14 +96,20 @@ def render_chat():
                     
                     with st.spinner("Executing query against Oracle DB..."):
                         try:
-                            results = execute_sql(sql_query)
-                            
-                            with st.spinner("Generating chatbot response..."):
-                                chat_response = generate_chat_response(user_input, results)
-                                st.markdown(chat_response)
-                                
-                                # Save assistant message
-                                append_message("assistant", chat_response, sql_query, results)
+                            rows, columns = execute_sql(sql_query)
+
+                            if rows:
+                                # Show table if multiple columns
+                                if len(columns) > 1:
+                                    st.markdown("### Query Results")
+                                    render_results_table(rows, columns)
+                                else:
+                                    with st.spinner("Generating chatbot response..."):
+                                        chat_response = generate_chat_response(user_input, rows)
+                                        st.markdown(chat_response)
+                                        append_message("assistant", chat_response, sql_query, rows)
+                            else:
+                                st.warning("No results found for your query.")
                         
                         except Exception as e:
                             error_msg = f"Error executing SQL query: {str(e)}"

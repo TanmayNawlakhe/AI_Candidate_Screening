@@ -4,4 +4,3 @@ google-generativeai
 pandas
 sqlalchemy
 fuzzywuzzy
-cx_Oracle

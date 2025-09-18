@@ -161,11 +161,47 @@ net start OracleServiceFREE
 
 ### Step 2: Setup Database Schema
 ```bash
-# Make sure virtual environment is activated
-# You should see (venv) in terminal
-
-python setup_database.py
-
+# Paste and execute below query in SQL Developer worksheet:
+CREATE TABLE candidates (
+    candidate_id NUMBER GENERATED ALWAYS AS IDENTITY
+        START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE NOT NULL,
+    name VARCHAR2(200 BYTE),
+    address VARCHAR2(500 BYTE),
+    career_objective CLOB,
+    skills CLOB,
+    educational_institution_name CLOB,
+    degree_names CLOB,
+    passing_years CLOB,
+    educational_results CLOB,
+    result_types CLOB,
+    major_field_of_studies CLOB,
+    professional_company_names CLOB,
+    company_urls CLOB,
+    start_dates CLOB,
+    end_dates CLOB,
+    yoe NUMBER,
+    related_skills_in_job CLOB,
+    positions CLOB,
+    locations CLOB,
+    responsibilities CLOB,
+    extra_curricular_activity_types CLOB,
+    extra_curricular_organization_names CLOB,
+    extra_curricular_organization_links CLOB,
+    role_positions CLOB,
+    languages CLOB,
+    proficiency_levels CLOB,
+    certification_providers CLOB,
+    certification_skills CLOB,
+    online_links CLOB,
+    issue_dates CLOB,
+    expiry_dates CLOB,
+    job_position_name VARCHAR2(200 BYTE),
+    educational_requirements CLOB,
+    experience_requirement VARCHAR2(200 BYTE),
+    age_requirement VARCHAR2(100 BYTE),
+    responsibilities_job CLOB,
+    skills_required CLOB
+);
 # Should output:
 # ✅ Database setup completed successfully!
 ```
@@ -173,7 +209,7 @@ python setup_database.py
 ### Step 3: Load Sample Data
 ```bash
 # Ensure you have resume_data.csv in the data/ folder
-python backend/db_setup.py
+python -m backend.db_setup
 
 # This will process and insert all resume data
 # May take a few minutes depending on data size

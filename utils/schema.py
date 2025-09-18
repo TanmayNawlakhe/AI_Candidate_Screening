@@ -14,8 +14,8 @@ The 'candidates' table schema is as follows (ignore job_position_name, education
 - major_field_of_studies: Major fields of study (JSON array).
 - professional_company_names: Previous employers (JSON array).
 - company_urls: URLs of company profiles (JSON array).
-- start_dates: Start dates for jobs (JSON array).
-- end_dates: End dates for jobs (JSON array).
+- start_dates: Start dates for jobs (JSON array).This is a Array data type with elements as string values, which are the start dates.
+- end_dates: End dates for jobs (JSON array).This is a Array data type with elements as string values, which are the end dates.
 - yoe: Years of experience (number).
 - related_skills_in_job: Related skills mentioned in job descriptions (JSON array).
 - positions: Positions held (JSON array).

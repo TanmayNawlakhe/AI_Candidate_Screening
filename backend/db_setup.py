@@ -1,4 +1,4 @@
-import cx_Oracle
+import oracledb
 import pandas as pd
 import json
 import re
@@ -90,7 +90,7 @@ def process_field(row, field_name):
 
 def preprocess_and_insert(csv_path):
     df = pd.read_csv(csv_path)
-    connection = cx_Oracle.connect(DB_USER, DB_PASS, DB_DSN)
+    connection = oracledb.connect(user=DB_USER, password=DB_PASS, dsn=DB_DSN)
     cursor = connection.cursor()
 
     print(f"Processing {len(df)} records...")
@@ -109,7 +109,7 @@ def preprocess_and_insert(csv_path):
             yoe = calculate_total_yoe(start_dates, end_dates)
 
             # Insert in OracleDB
-            cursor.execute({InsertionString}, {
+            cursor.execute(InsertionString, {
                 'name': name,
                 'address': address[:500],
                 'career_objective': career_objective,
