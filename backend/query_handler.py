@@ -1,9 +1,6 @@
-import os
-# Force the correct Instant Client path before any cx_Oracle call
-os.environ['PATH'] = r'C:\oracle\instantclient_19_12\instantclient_23_9;' + os.environ['PATH']
-
 import cx_Oracle
 from utils.schema import SCHEMA_DESCRIPTION
+from utils.lists import rules
 from config import DB_DSN, DB_PASS, DB_USER, GEMINI_API_KEY
 import google.generativeai as genai
 
@@ -14,12 +11,7 @@ def generate_sql_from_nl(nl_query):
     You are an expert Oracle SQL generator. Based on the following schema description, convert the user's natural language query into a valid Oracle SQL SELECT query. If querying a JSON field (like 'skills'), use a fallback method with 'LIKE' instead of JSON functions for maximum compatibility:
     {SCHEMA_DESCRIPTION}
     Rule:
-    - Lowercase all the terms and attributes and inputs and everything just lowercase them. But you dont need to lowercase the retrieved results.
-    - If the user query has terms like worked on, etc. you can consider those terms which are mentioned there as skills.
-    - Use Oracle syntax and functions only.
-    - If the user query is vague (e.g., mentions "list of candidates", "show candidates"), generate a query selecting only the 'name' column.
-    - Only include additional columns if the user explicitly asks for them (e.g., "list candidates with their skills and experience").
-    - The generated SQL must be valid Oracle SQL, using SELECT and WHERE clauses as needed.
+    {rules}
     User query: "{nl_query}"
     Generate only the SQL SELECT statement (do not explain).
     """

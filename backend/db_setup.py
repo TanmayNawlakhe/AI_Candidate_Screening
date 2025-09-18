@@ -1,7 +1,3 @@
-import os
-# Force the correct Instant Client path before any cx_Oracle call
-os.environ['PATH'] = r'C:\oracle\instantclient_19_12\instantclient_23_9;' + os.environ['PATH']
-
 import cx_Oracle
 import pandas as pd
 import json
@@ -61,7 +57,6 @@ def calculate_total_yoe(start_dates_json, end_dates_json):
         return 0
 
 def process_field(row, field_name):
-    """Improved field processing with better error handling"""
     field_value = safe_get_field(row, field_name)
     
     if pd.isnull(field_value) or field_value in ['None', '[None]', 'N/A', '', 'nan']:

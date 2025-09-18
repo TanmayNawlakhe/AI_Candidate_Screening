@@ -9,6 +9,7 @@ def generate_chat_response(user_query, sql_results):
     "{user_query}"
     And here are the query results in raw form:
     {sql_results}
+    If experience(yoe) is one of the results, and user is asking for yoe lets say, then you should convert those float valued 'yoe' to year and months also, and give both the float value and the year-months as output result.
     Generate a clear, concise, and helpful response to the user based on the results and the query. Only include relevant information.
     If results are in some number or list or comma separated, just show the elements each below each other like some bullet numbering.
     If results is empty i.e. there are no matching records, politely inform the user that no results were found.

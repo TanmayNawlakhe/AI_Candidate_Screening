@@ -46,4 +46,12 @@ InsertionString = """INSERT INTO candidates (
                     :responsibilities_job, :skills_required
                 )"""
 
-keywords = ["candidate","person", "student", "knowledge","expertise","expert","internship", "intern", "experience", "skills", "degree", "job", "employment", "position", "yoe", "detail", "details","education"]
+keywords = ["candidate","person", "student","career", "knowledge","expertise","expert","internship", "intern", "experience", "skills", "degree", "job", "employment", "position", "yoe", "detail", "details","education"]
+
+rules = """
+    - Lowercase all the terms and attributes and inputs and everything just lowercase them. But you dont need to lowercase the retrieved results.
+    - If the user query has terms like worked on, etc. you can consider those terms which are mentioned there as skills.
+    - Use Oracle syntax and functions only.
+    - If the user query is vague (e.g., mentions "list of candidates", "show candidates"), generate a query selecting only the 'name' column.
+    - Only include additional columns if the user explicitly asks for them (e.g., "list candidates with their skills and experience").
+    - The generated SQL must be valid Oracle SQL, using SELECT and WHERE clauses as needed."""

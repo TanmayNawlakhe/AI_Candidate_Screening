@@ -79,13 +79,11 @@
     font-weight: 500;
 }
 
-/* Custom scrollbar */
 .main .block-container {
     max-height: 80vh;
     overflow-y: auto;
 }
 
-/* Input styling */
 .stTextInput > div > div > input {
     background: rgba(255, 255, 255, 0.1);
     color: white;
